@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var eggText: UILabel!
     @IBOutlet weak var timerProgressBar: UIProgressView!
     
-    @objc func updateTimer () {
+    @objc func updateTimer () { //@objc is required because the Timer function is an Obj-C method
         secondsLeft -= 1
         timerProgressBar.progress = Float(secondsLeft/totalTime)
         print(timerProgressBar.progress)
@@ -39,6 +39,8 @@ class ViewController: UIViewController {
         totalTime = Float(eggTimes[hardness]!)
         secondsLeft = Float(eggTimes[hardness]!)
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        //timeInterval is how long the wait is
+        //Function passed to selector then gets called
     }
     
 }
